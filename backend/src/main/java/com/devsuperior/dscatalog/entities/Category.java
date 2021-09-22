@@ -17,25 +17,24 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "tb_category")
-public class Category implements Serializable{
+public class Category implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
-
-	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-	private Instant createdAt; // atributo para armezenar o instante que o registro foi criado pela primeira vez
-
-	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-	private Instant updateddAt; // atributo para armezenar o instante que o registro foi criado pela primeira vez
 	
+	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+	private Instant createdAt;
+
+	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+	private Instant updatedAt;
+
 	@ManyToMany(mappedBy = "categories")
 	private Set<Product> products = new HashSet<>();
-
+	
 	public Category() {
-
 	}
 
 	public Category(Long id, String name) {
@@ -58,31 +57,29 @@ public class Category implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	
 	public Instant getCreatedAt() {
 		return createdAt;
 	}
 
-	public Instant getUpdateddAt() {
-		return updateddAt;
+	public Instant getUpdatedAt() {
+		return updatedAt;
 	}
 
-	//metodo auxiliar para sempre que for salvar uma categoria, o metodo armazana no createdAt o instante atual
 	@PrePersist
 	public void prePersist() {
 		createdAt = Instant.now();
 	}
-
-	// metodo auxiliar para sempre que for atualizar, o metodo armazena no updatedAt o instante atual
+	
 	@PreUpdate
 	public void preUpdate() {
-		updateddAt = Instant.now();
+		updatedAt = Instant.now();
 	}
 
 	public Set<Product> getProducts() {
 		return products;
 	}
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -107,7 +104,4 @@ public class Category implements Serializable{
 			return false;
 		return true;
 	}
-
-
-
 }
