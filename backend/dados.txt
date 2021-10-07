@@ -1,0 +1,30 @@
+spring.datasource.url=${DB_URL}
+spring.datasource.username=${DB_USERNAME}
+spring.datasource.password=${DB_PASSWORD}
+
+postgres://
+jhhincpjokpvvd
+:
+350bfc46c5eafa2edc3ed3180a11d29f29b37a63cdfbf699376101dbf159d30a
+@
+ec2-35-171-171-27.compute-1.amazonaws.com
+:
+5432
+/
+ddqgksc6hvdku
+
+
+docker run -p 80:8080 --name dscatalog-aws -e APP_PROFILE:prod -e DB_URL=aulaimplantacao.ccdgx52vmblh.us-east-1.rds.amazonaws.com:5432/dscatalog -e DB_USERNAME=postgres -e DB_PASSWORD=12345678 bernardomoderno/dscatalog:v1
+
+docker run -p 80:8080 --name dscatalog-aws -e APP_PROFILE=prod -e DB_URL=jdbc:postgresql://aulaimplantacao.ccdgx52vmblh.us-east-1.rds.amazonaws.com:5432/dscatalog -e DB_USERNAME=postgres -e DB_PASSWORD=12345678 bernardomoderno/dscatalog:v1
+
+postgres://
+lhvyklscrhlqol
+:
+903fae9cef3b608dc5a674cab588df4acbcf8c155124a6f9e2ccf8126fe496d3
+@
+ec2-54-204-148-110.compute-1.amazonaws.com
+:
+5432
+/
+dbmelqmdkt5gpo
